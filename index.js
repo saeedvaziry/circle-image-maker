@@ -4,29 +4,61 @@ const renderImage = require('./image');
 
 app.get('/', async function(req, res) {
   const images = [
-    "https://pbs.twimg.com/profile_images/1222206393861713921/EFgpZ3BT_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1336252326009565186/5lC8aG_s_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1313988570336681984/REwIHNAc_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1301255414735147009/AbFi0tIm_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1344221435204665345/C8DnuZqu_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1315375653466800130/Wh6CfC4j_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1253472047298215936/IoEx1UNd_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1334251286292787201/U8OJ_Jcb_400x400.jpg",
-    "https://pbs.twimg.com/profile_images/1347869218197315586/jxvJUWBY_400x400.jpg",
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1222206393861713921/EFgpZ3BT_400x400.jpg",
+      username:'aaaa'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1336252326009565186/5lC8aG_s_400x400.jpg",
+      username:'bbbb'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1313988570336681984/REwIHNAc_400x400.jpg",
+      username:'cccc'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1301255414735147009/AbFi0tIm_400x400.jpg",
+      username:'dddd'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1344221435204665345/C8DnuZqu_400x400.jpg",
+      username:'eeee'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1315375653466800130/Wh6CfC4j_400x400.jpg",
+      username:'ffff'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1253472047298215936/IoEx1UNd_400x400.jpg",
+      username:'gggg'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1334251286292787201/U8OJ_Jcb_400x400.jpg",
+      username:'hhhh'
+    },
+    {
+      avatar : "https://pbs.twimg.com/profile_images/1347869218197315586/jxvJUWBY_400x400.jpg",
+      username:'iiii'
+    },
   ];
   let image = await renderImage([
-    {
-      distance: 0,
-      count: 1,
-      radius: 100,
-      users: ["https://pbs.twimg.com/profile_images/1222206393861713921/EFgpZ3BT_400x400.jpg"]
-    },
     {
       distance: 300,
       count: 8,
       radius: 50,
       users: images
-    }
+    },
+    {
+      distance: 0,
+      count: 1,
+      radius: 100,
+      users: [
+        {
+          avatar : "https://pbs.twimg.com/profile_images/1222206393861713921/EFgpZ3BT_400x400.jpg",
+          username: "Nima1980"
+        }
+      ]
+    },
   ]);
   image.pipe(res);
 });
