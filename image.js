@@ -45,16 +45,18 @@ module.exports = async function render(config) {
 
       // Drawing line for each circle from 'Center' position [ width / 2 , height / 2 ] to  [circleX,circleY]
       ctx.beginPath();
-      ctx.setLineDash([5, 5]);
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([7, 12]);
       ctx.moveTo(width / 2, height / 2);
       ctx.lineTo(circleX, circleY);
-      ctx.strokeStyle = '#fff';
       ctx.stroke();
+      ctx.save();
 
       // if we are trying to render a circle but we ran out of users, just exit the loop. We are done.
       if (!users[i]) break;
 
-      ctx.save();
+
       ctx.beginPath();
       ctx.arc(circleX, circleY, radius, 0, 2 * Math.PI);
       ctx.clip();
@@ -80,22 +82,25 @@ module.exports = async function render(config) {
       // if circleAngle === 90 : Text must be in bottom
       // if circleAngle === 270 : Text must be in top
       const fontSize = 16;
+      ctx.font = `bold ${fontSize}px arial`;
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#fff";
       let textX , textY;
+      let textWidth = Math.max(ctx.measureText(users[i].username).width,ctx.measureText(users[i].name).width);
       if(circleAngle === 90){
-        [textX,textY] = [circleX - ctx.measureText(users[i].username).width/2 ,circleY + radius + fontSize ];
+        [textX,textY] = [circleX ,circleY + radius + fontSize*2 + 6];
       }
       else if(circleAngle === 270){
-        [textX,textY] = [circleX - ctx.measureText(users[i].username).width/2,circleY - radius - fontSize];
+        [textX,textY] = [circleX,circleY - radius - fontSize*2];
       }
       else if(circleAngle < 90 || circleAngle > 270){
-        [textX,textY] = [circleX + radius + fontSize/2,circleY + fontSize/2];
+        [textX,textY] = [circleX + radius + textWidth/2 + fontSize,circleY + fontSize/2];
       }
       else {
-        [textX,textY] = [circleX - radius - ctx.measureText(users[i].username).width - fontSize/2,circleY + fontSize/2];
+        [textX,textY] = [circleX - radius - textWidth/2 - fontSize,circleY + fontSize/2];
       }
-      ctx.font = `bold ${fontSize}px Arial`;
-      ctx.fillStyle = "#fff";
-      ctx.fillText(users[i].username,textX,textY);
+      ctx.fillText(users[i].name,textX,textY - 12);
+      ctx.fillText(users[i].username,textX,textY + 12);
     }
   }
 
