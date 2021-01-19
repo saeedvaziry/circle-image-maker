@@ -10,6 +10,7 @@ const toRad = (x) => x * (Math.PI / 180);
  * count: circles in the current layer
  * radius: of the circles in this layer
  * users: list of users to render in the format {avatar:string,username:string}
+ * @param bg
  * @returns {Promise<void>}
  */
 module.exports = async function render(config, bg = "#00b4f7") {
