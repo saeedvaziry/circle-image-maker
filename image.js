@@ -12,7 +12,7 @@ const toRad = (x) => x * (Math.PI / 180);
  * users: list of users to render in the format {avatar:string,username:string}
  * @returns {Promise<void>}
  */
-module.exports = async function render(config) {
+module.exports = async function render(config, bg = "#00b4f7") {
   const width = 1000;
   const height = 1000;
 
@@ -20,7 +20,7 @@ module.exports = async function render(config) {
   const ctx = canvas.getContext("2d");
 
   // fill the background
-  ctx.fillStyle = "#00b4f7";
+  ctx.fillStyle = bg;
   ctx.fillRect(0, 0, width, height);
 
   // loop over the layers
