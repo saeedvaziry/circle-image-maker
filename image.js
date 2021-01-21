@@ -86,12 +86,12 @@ module.exports = async function render(config, bg = "#00b4f7") {
       ctx.fillStyle = "#fff";
       let textX , textY;
 
-      registerFont('font/normal.ttf',{family: 'yahei', weight: 'normal'});
-      ctx.font = `normal ${fontSize-3}px yahei`;
+      registerFont('font/regular.ttf',{family: 'roboto', weight: 'normal'});
+      ctx.font = `normal ${fontSize-3}px roboto`;
       let usernameWidth = ctx.measureText(users[i].username).width;
 
-      registerFont('font/msyhbd.ttf',{family: 'yahei', weight: 'bold'});
-      ctx.font = `bold ${fontSize}px yahei`;
+      registerFont('font/bold.ttf',{family: 'roboto', weight: 'bold'});
+      ctx.font = `bold ${fontSize}px roboto`;
       let nameWidth = ctx.measureText(users[i].name).width;
 
       let textWidth = Math.max(nameWidth,usernameWidth);
@@ -108,11 +108,11 @@ module.exports = async function render(config, bg = "#00b4f7") {
         [textX,textY] = [circleX - radius - textWidth/2 - 10, circleY];
       }
       ctx.fillText(users[i].name,textX,textY - 12);
-      registerFont('font/normal.ttf',{family: 'yahei', weight: 'normal'});
-      ctx.font = `normal ${fontSize-3}px yahei`;
+      registerFont('font/regular.ttf',{family: 'roboto', weight: 'normal'});
+      ctx.font = `normal ${fontSize-3}px roboto`;
       ctx.fillText(users[i].username,textX,textY + 12);
     }
-    ctx.font = `bold 45px yahei`;
+    ctx.font = `bold 45px roboto`;
     ctx.textAlign = "center";
     ctx.fillText('MY BEST FRIENDS ON',width/2 - 30 ,100);
 
@@ -123,7 +123,7 @@ module.exports = async function render(config, bg = "#00b4f7") {
       45,70,70
     );
 
-    ctx.font = `bold 20px yahei`;
+    ctx.font = `bold 20px roboto`;
     ctx.textAlign = "left";
     ctx.fillText('MrPan.me',30 ,height - 30);
   }
